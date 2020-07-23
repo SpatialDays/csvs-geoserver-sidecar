@@ -12,3 +12,4 @@ ENV S3_S3V4 no
 ENV S3_URL http://s3-uk-1.sa-catapult.co.uk
 
 COPY restore_rasters.sh /restore_rasters.sh
+COPY restore_netcdf.sh /restore_netcdf.sh

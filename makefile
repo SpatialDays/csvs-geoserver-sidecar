@@ -1,4 +1,4 @@
-IMAGENAME = davidedelerma/geoserver-commands:${TAG}
+IMAGENAME = satapps/geoserver-commands:0.6
 
 build:
 	docker build -t $(IMAGENAME) .

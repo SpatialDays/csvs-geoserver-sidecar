@@ -1,4 +1,4 @@
-IMAGENAME = satapps/geoserver-commands:0.6
+IMAGENAME = satapps/geoserver-commands:0.7
 
 build:
 	docker build -t $(IMAGENAME) .

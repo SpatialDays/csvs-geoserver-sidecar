@@ -2,6 +2,9 @@ FROM python:3.7.8-alpine3.12
 
 RUN pip install awscli
 
+RUN apk update && apk upgrade && \
+    apk add curl
+
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 
 ENV AWS_ACCESS_KEY_ID **None**
@@ -12,3 +15,4 @@ ENV S3_URL http://s3-uk-1.sa-catapult.co.uk
 
 COPY restore_rasters.sh /restore_rasters.sh
 COPY restore_netcdf.sh /restore_netcdf.sh
+COPY restore_backup.sh /restore_backup.sh

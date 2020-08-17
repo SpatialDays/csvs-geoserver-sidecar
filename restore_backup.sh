@@ -11,7 +11,7 @@ if [ -z "$GEOSERVER_CRED" ] ; then
 fi
 
 {
-    curl -f -u $GEOSERVER_CRED -X GET http://geoserver:8080/geoserver/rest/reset -I
+    curl -f -u $GEOSERVER_CRED -X POST http://geoserver:8080/geoserver/rest/reset -I
 } || {
     echo 'The provided credentials are not valid.'
     exit 2
@@ -31,7 +31,6 @@ mv $BACKUP_FILE tmp.tgz
 tar -xvzf tmp.tgz -C /geoserver_data/data/backup_unzipped &&
 cp -r /geoserver_data/data/backup_unzipped/geoserver_data/data/* /geoserver_data/data/ &&
 echo copying files from abckup to data folder
-curl -u $GEOSERVER_CRED -X POST http://geoserver:8080/geoserver/rest/reset -I
 curl -u $GEOSERVER_CRED -X PUT http://geoserver:8080/geoserver/rest/reload -I
 echo removing tmp files
 rm -rf /geoserver_data/data/backup_unzipped
